@@ -19,9 +19,7 @@ before_script:
  - psql -c "ALTER USER postgres WITH PASSWORD 'admin';" -U postgres
  - psql -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO postgres;" -U postgres
 
-  script:
- - export APP_SETTINGS="testing"
- - export SECRET_KEY="hardtoguess"
+script:
  - export TEST_URL="dbname = 'test_db' user = 'postgres' host = 'localhost' port = '5432' password = 'admin'"
  - pytest --cov-report term-missing --cov=app/api
  - coverage run --source=app.api -m pytest && coverage report
