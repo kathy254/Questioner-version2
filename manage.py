@@ -133,21 +133,4 @@ class DbSetup():
 
             cursor.execute(new_query, ("Admin", "Admin", "Admin", "admin@questioner.com", "0745745745", "default_admin", pwd_hashed, True))
             self.connection.commit()
-
-
-    # def create_default_admin(self):
-    #     cursor = self.createConnection().cursor(cursor_factory=RealDictCursor)
-    #     password = generate_password_hash("adming1234")
-    #     query = """
-    #             SELECT * FROM user_accounts WHERE isAdmin=%s
-    #             """
-    #     cursor.execute(query, (True,))
-    #     admin = cursor.fetchone()
-    #     if not admin:
-    #         query = """
-    #                 INSERT INTO user_accounts(first_name, last_name, other_name, email, phone_number, username, password, isAdmin)\
-    #                 VALUES(%s, %s, %s, %s, %s, %s, %s, %s)
-    #                 """
-    #         cursor.execute(query, ("Admin", "Admin" "Admin", "admin@questioner.com", "0714789456", "default_admin", password, True))
-    #         self.connection.commit()
-    
+  
