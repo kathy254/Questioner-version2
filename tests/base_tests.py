@@ -1,7 +1,7 @@
 import unittest
 from app import create_app
-from manage import DbSetup
 from instance.config import app_config
+from manage import DbSetup
 
 
 class BaseTest(unittest.TestCase):
@@ -10,8 +10,9 @@ class BaseTest(unittest.TestCase):
 
     def setUp(self):
         self.app = create_app("testing")
-        self.client = self.app.test_client()
+        self.test_client = self.app.test_client()
         self.app_context = self.app.app_context()
+
         self.myDb.createTables()
 
         with self.app_context:
@@ -21,5 +22,3 @@ class BaseTest(unittest.TestCase):
         with self.app_context:
             self.app_context.pop()
             self.myDb.drop_tables()
-
-    
