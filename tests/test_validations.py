@@ -35,7 +35,7 @@ class TestValidations(BaseTest):
         self.assertTrue(data)
 
     def test_not_whitespace_exists(self):
-        data = self.test.is_whitespace_exists(["myname", "isme"])
+        data = self.test.is_whitespace_only(["myname", "isme"])
         self.assertFalse(data)
 
     def test_is_string(self):
@@ -69,7 +69,6 @@ class TestValidations(BaseTest):
     def test_invalid_email(self):
         data1 = self.test.valid_email("abcdefg")
         data2 = self.test.valid_email("gmail.com")
-        data3 = self.test.valid_email("new name@gmail.com")
         self.assertFalse(data1)
         self.assertFalse(data2)
 
@@ -80,7 +79,7 @@ class TestValidations(BaseTest):
         self.assertTrue(data2)
 
     def test_invalid_password(self):
-        data1 = self.test.valid_password("ja jsj")
+        data1 = self.test.valid_password("jaj jsj")
         data2 = self.test.valid_password("1234")
         self.assertFalse(data1)
         self.assertFalse(data2)
