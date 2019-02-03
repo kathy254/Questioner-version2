@@ -133,4 +133,18 @@ class DbSetup():
 
             cursor.execute(new_query, ("Admin", "Admin", "Admin", "admin@questioner.com", "0745745745", "default_admin", pwd_hashed, True))
             self.connection.commit()
-  
+    
+    def drop_tables(self):
+        cursor = self.createConnection().cursor()
+        query1 = """DROP TABLE IF EXISTS user_accounts CASCADE"""
+        query2 = """DROP TABLE IF EXISTS meetups CASCADE"""
+        query3 = """DROP TABLE IF EXISTS questions CASCADE"""
+        query4 = """DROP TABLE IF EXISTS rsvp CASCADE"""
+        query5 = """DROP TABLE IF EXISTS comments CASCADE"""
+        query6 = """DROP TABLE IF EXISTS votes CASCADE"""
+        query7 = """DROP TABLE IF EXISTS blacklist CASCADE"""
+
+        queries = [query1, query2, query3, query4, query5, query6, query7]
+        for query in queries:
+            cursor.execute(query)
+            self.connection.commit()
