@@ -15,7 +15,7 @@ class DbSetup():
         try:
             if "pytest" in modules:
                 url = test_url
-            if os.getenv("APP_SETTINGS") == "development":
+            elif os.getenv("APP_SETTINGS") == "development":
                 url = db_url
             self.connection = psycopg2.connect(url)
         except Exception:
