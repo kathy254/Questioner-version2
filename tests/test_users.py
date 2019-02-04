@@ -82,6 +82,17 @@ class TestUsers(BaseTest):
         self.assertEqual(response5.status_code, 400)
         self.assertTrue(response5.content_type == "application/json")
 
+    def test_invalid_username(self):
+        response9 = self.test_client.post(signup_url,
+                                          data=json.dumps(self.username_whitespace_payload),
+                                          content_type = "application/json")
+        result9 = json.loads(response9.data.decode("UTF-8"))
+
+        self.assertEqual(result9["status"], 400)
+        self.assertEqual(result9["message"], "Username cannot contains whitespaces.")
+        self.assertEqual(response9.status_code, 400)
+        self.assertTrue(response9.content_type == "application/json")
+
     def test_email_exists(self):
         self.test_client.post(signup_url,
                               data=json.dumps(self.correct_signup_payload),

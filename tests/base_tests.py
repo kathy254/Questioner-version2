@@ -58,6 +58,11 @@ class BaseTest(unittest.TestCase):
                                "phone_number": "123456789",
                                "username": "cathy254", "password": "abdefgh"}
 
+    username_whitespace_payload = {"first_name": "new", "last_name": "client",
+                                   "other_name": "other", "email": "new_client@gmail.com",
+                                   "phone_number": "789456123", "username": "new client",
+                                   "password": "poiuytrew"}
+
     def tearDown(self):
         with self.app_context:
             self.app_context.pop()
